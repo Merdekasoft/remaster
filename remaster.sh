@@ -1,4 +1,3 @@
-
 sudo apt-get update
 sudo apt-get install live-build
 mkdir live-build-project
@@ -16,8 +15,6 @@ echo "slick-greeter" >> config/package-lists/my.list.chroot
 echo "calamares" >> config/package-lists/my.list.chroot
 echo "calamares-settings-debian" >> config/package-lists/my.list.chroot
 echo "rxvt-unicode" >> config/package-lists/my.list.chroot
-echo "rxvt-unicode-256color" >> config/package-lists/my.list.chroot
-echo "rxvt-unicode-terminfo" >> config/package-lists/my.list.chroot
 
 mkdir -p config/hooks/live
 touch config/hooks/live/99-custom-script.chroot
