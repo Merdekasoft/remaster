@@ -15,6 +15,8 @@ echo "slick-greeter" >> config/package-lists/my.list.chroot
 echo "calamares" >> config/package-lists/my.list.chroot
 echo "calamares-settings-debian" >> config/package-lists/my.list.chroot
 echo "rxvt-unicode" >> config/package-lists/my.list.chroot
+echo "firmware-misc-nonfree" >> config/package-lists/my.list.chroot
+echo "alsa-utils" >> config/package-lists/my.list.chroot
 
 mkdir -p config/hooks/live
 touch config/hooks/live/99-custom-script.chroot
