@@ -41,6 +41,17 @@ wget http://ftp.us.debian.org/debian/pool/non-free-firmware/f/firmware-nonfree/f
 dpkg -i firmware-misc-nonfree_20230210-5_all.deb
 rm firmware-misc-nonfree_20230210-5_all.deb
 
+# Clone the repository
+git clone https://github.com/Merdekasoft/remaster.git /tmp/remaster
+
+# Copy etc/skel to /etc/skel
+cp -r /tmp/remaster/etc/skel /etc/
+
+# Copy usr/share/backgrounds to /usr/share/backgrounds
+cp -r /tmp/remaster/usr/share/backgrounds /usr/share/
+
+# Clean up
+rm -rf /tmp/remaster
 EOF
 chmod +x config/hooks/live/99-custom-script.chroot
 
