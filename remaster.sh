@@ -37,12 +37,9 @@ cat <<EOF > config/hooks/live/99-custom-script.chroot
 
 # Download the firmware-misc-nonfree package
 wget http://ftp.us.debian.org/debian/pool/non-free-firmware/f/firmware-nonfree/firmware-misc-nonfree_20230210-5_all.deb
-
-# Install the downloaded package
 dpkg -i firmware-misc-nonfree_20230210-5_all.deb
-
-# Clean up
 rm firmware-misc-nonfree_20230210-5_all.deb
+
 EOF
 chmod +x config/hooks/live/99-custom-script.chroot
 
