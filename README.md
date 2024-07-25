@@ -6,7 +6,7 @@ This repository contains a script to create a custom Debian Bookworm live image 
 
 Ensure you have the following installed on your system:
 
-- Debian-based distribution (Debian, Ubuntu, etc.)
+- Debian-based distribution
 - `live-build` package
 
 You can install `live-build` using:
