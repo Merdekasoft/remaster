@@ -2,6 +2,8 @@
 URxvt*background: #282a36
 URxvt*foreground: #f8f8f2
 
+URxvt*scrollBar: false
+
 ! Warna Kursor
 URxvt*cursorColor: #f8f8f2
 
