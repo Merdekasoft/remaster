@@ -25,3 +25,6 @@ URxvt*color12: #bd93f9
 URxvt*color13: #ff79c6
 URxvt*color14: #8be9fd
 URxvt*color15: #ffffff
+
+! Hilangkan Scrollbar
+URxvt*scrollBar: false
