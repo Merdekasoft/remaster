@@ -27,6 +27,7 @@ calamares-settings-debian
 rxvt-unicode
 alsa-utils
 wget
+feh
 EOF
 
 # Create and set up the custom script hook
