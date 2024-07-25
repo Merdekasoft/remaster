@@ -28,6 +28,7 @@ rxvt-unicode
 alsa-utils
 wget
 feh
+breeze-cursor-theme
 EOF
 
 # Create and set up the custom script hook
