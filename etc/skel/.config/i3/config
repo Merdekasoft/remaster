@@ -1,2 +1,97 @@
-new_window 1pixel
+# This file is ~/.config/i3/config or ~/.i3/config
+
+# Set inner gap and outer gap
 gaps inner 10
+gaps outer 0
+new_window 1pixel
+
+# Set mod key (Mod1 is usually Alt, Mod4 is usually the Super key or Windows key)
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command i3status
+    position top  # Set the panel to the top
+}
+
+# Set background with feh
+exec --no-startup-id feh --bg-scale /usr/share/backgrounds/Sophie-Bi.jpeg
+
+# Basic keybindings for window management
+# Open terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+
+# Change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# Move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# Split in horizontal orientation
+bindsym $mod+h split h
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Fullscreen mode toggle
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Move focus to the workspace to the left/right
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+
+# Move focused container to the workspace to the left/right
+bindsym $mod+Shift+Left move workspace prev
+bindsym $mod+Shift+Right move workspace next
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 in place (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Are you sure you want to exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# Lock screen (requires i3lock to be installed)
+#bindsym $mod+Shift+x exec i3lock
+
+# Volume control (requires amixer to be installed)
+bindsym $mod+0 exec amixer set Master toggle
+bindsym $mod+minus exec amixer set Master 5%-
+bindsym $mod+equal exec amixer set Master 5%+
+
+# Screen brightness (requires xbacklight to be installed)
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
