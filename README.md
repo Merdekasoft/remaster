@@ -1,4 +1,4 @@
-# Debian Live-Build with i3 and LightDM
+# Debian Live with i3
 
 This repository contains a script to create a custom Debian Bookworm live image with the i3 window manager and LightDM display manager using `live-build`.
 
