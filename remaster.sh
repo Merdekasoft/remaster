@@ -56,6 +56,8 @@ cp -r /tmp/remaster/usr/share/backgrounds /usr/share/
 
 # Clean up
 rm -rf /tmp/remaster
+sudo apt-get install calamares grub-efi-amd64 grub-efi-amd64-bin grub-efi-amd64-signed
+
 EOF
 chmod +x config/hooks/live/99-custom-script.chroot
 
