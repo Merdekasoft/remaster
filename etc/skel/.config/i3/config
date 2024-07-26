@@ -21,10 +21,14 @@ floating_modifier $mod
 bar {
     status_command i3status
     position top  # Set the panel to the top
+    tray_output primary
 }
 
 # Set background with feh
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/Sophie-Bi.jpeg
+
+# Start nm-applet for WiFi management
+exec --no-startup-id nm-applet
 
 # Basic keybindings for window management
 # Open terminal
