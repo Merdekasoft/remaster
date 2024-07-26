@@ -32,6 +32,9 @@ alsa-utils
 wget
 feh
 breeze-cursor-theme
+laptop-mode-tools
+network-manager
+network-manager-gnome
 grub-pc
 EOF
 
@@ -56,8 +59,8 @@ cp -r /tmp/remaster/usr/share/backgrounds /usr/share/
 
 # Clean up
 rm -rf /tmp/remaster
-sudo apt-get install calamares grub-efi-amd64 grub-efi-amd64-bin grub-efi-amd64-signed
-
+sudo apt-get install -y calamares grub-efi-amd64 grub-efi-amd64-bin grub-efi-amd64-signed
+sudo apt-get install -y live-boot live-boot-doc live-config live-config-doc live-config-systemd live-config-systemd live-tools live-task-localisation live-task-recommended calamares-settings-debian
 EOF
 chmod +x config/hooks/live/99-custom-script.chroot
 
