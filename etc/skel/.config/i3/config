@@ -4,6 +4,7 @@
 gaps inner 10
 gaps outer 0
 new_window 1pixel
+exec --no-startup-id picom -b
 
 # Set mod key (Mod1 is usually Alt, Mod4 is usually the Super key or Windows key)
 set $mod Mod4
