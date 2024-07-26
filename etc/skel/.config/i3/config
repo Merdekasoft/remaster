@@ -124,11 +124,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Volume control (requires amixer to be installed)
-bindsym $mod+0 exec amixer set Master toggle
-bindsym $mod+minus exec amixer set Master 5%-
-bindsym $mod+equal exec amixer set Master 5%+
-
 # Screen brightness (requires xbacklight to be installed)
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
