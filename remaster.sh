@@ -20,7 +20,7 @@ lightdm
 xserver-xorg
 xinit
 git
-mc
+thunar
 fonts-firacode
 fonts-noto-color-emoji
 htop
