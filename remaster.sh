@@ -15,6 +15,7 @@ lb config --distribution bookworm --debian-installer none
 mkdir -p config/package-lists
 cat <<EOF > config/package-lists/my.list.chroot
 i3
+picom
 lightdm
 xserver-xorg
 xinit
