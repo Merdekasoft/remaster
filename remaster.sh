@@ -32,9 +32,6 @@ alsa-utils
 wget
 feh
 breeze-cursor-theme
-grub-efi-amd64 
-grub-efi-amd64-bin 
-grub-efi-amd64-signed
 grub-pc
 EOF
 
