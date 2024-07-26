@@ -21,6 +21,8 @@ xserver-xorg
 xinit
 git
 mc
+fonts-firacode
+fonts-noto-color-emoji
 htop
 slick-greeter
 calamares
