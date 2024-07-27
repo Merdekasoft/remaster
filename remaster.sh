@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Log file for script execution
-LOGFILE="live-build-setup.log"
-
 # Update and install live-build
-echo "Updating system and installing live-build..." | tee -a $LOGFILE
+echo "Updating system and installing live-build..."
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install -y live-build | tee -a $LOGFILE
+sudo apt-get install -y live-build
 
 # Set up live-build project directory
 PROJECT_DIR="live-build-project"
@@ -16,8 +13,8 @@ fi
 cd $PROJECT_DIR
 
 # Configure live-build with Debian Installer
-echo "Configuring live-build..." | tee -a $LOGFILE
-lb config --distribution bookworm --debian-installer live | tee -a $LOGFILE
+echo "Configuring live-build..."
+lb config --distribution bookworm --debian-installer live
 
 # Modify sources.list to include non-free repository
 SOURCES_DIR="config/archives"
@@ -114,7 +111,7 @@ EOF
 chmod +x $HOOKS_DIR/01-set-hostname.chroot
 
 # Build the live system
-echo "Building the live system..." | tee -a $LOGFILE
-sudo lb build | tee -a $LOGFILE
+echo "Building the live system..."
+sudo lb build
 
-echo "Live-build process completed." | tee -a $LOGFILE
+echo "Live-build process completed."
