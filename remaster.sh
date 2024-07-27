@@ -39,6 +39,8 @@ i3
 sudo
 fonts-font-awesome
 picom
+numix-gtk-theme
+numix-icon-theme
 lightdm
 xserver-xorg
 xinit
