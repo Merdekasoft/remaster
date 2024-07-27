@@ -22,6 +22,8 @@ EOF
 mkdir -p config/package-lists
 cat <<EOF > config/package-lists/my.list.chroot
 i3
+sudo
+fonts-font-awesome
 picom
 lightdm
 xserver-xorg
