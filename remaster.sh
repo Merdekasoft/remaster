@@ -65,6 +65,8 @@ HOOKS_DIR="config/hooks/live"
 if [ ! -d "$HOOKS_DIR" ]; then
     mkdir -p $HOOKS_DIR
 fi
+
+# Custom script hook
 cat <<EOF > $HOOKS_DIR/99-custom-script.chroot
 #!/bin/sh
 
@@ -94,6 +96,20 @@ sed -i 's/^#greeter-hide-users=true/greeter-hide-users=false/' /usr/share/lightd
 rm -rf /tmp/remaster
 EOF
 chmod +x $HOOKS_DIR/99-custom-script.chroot
+
+# Hostname script hook
+cat <<EOF > $HOOKS_DIR/01-set-hostname.chroot
+#!/bin/sh
+
+# Set the hostname
+echo "bee" > /etc/hostname
+
+# Update /etc/hosts file
+cat <<EOL >> /etc/hosts
+127.0.0.1   bee
+EOL
+EOF
+chmod +x $HOOKS_DIR/01-set-hostname.chroot
 
 # Build the live system
 echo "Building the live system..." | tee -a $LOGFILE
