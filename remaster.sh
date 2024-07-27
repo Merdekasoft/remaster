@@ -61,10 +61,13 @@ cp -r /tmp/remaster/etc/skel /etc/
 cp -r /tmp/remaster/usr/share/backgrounds /usr/share/
 
 # Add GRUB_DISABLE_OS_PROBER=false to GRUB config
-echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
+sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
 
 # Update GRUB configuration
 update-grub
+
+# Modify LightDM configuration to show user list
+sed -i 's/greeter-hide-users=true/greeter-hide-users=false/' /usr/share/lightdm/lightdm.conf.d/01_debian.conf
 
 # Clean up
 rm -rf /tmp/remaster
