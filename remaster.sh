@@ -8,8 +8,8 @@ sudo apt-get install -y live-build
 mkdir -p live-build-project
 cd live-build-project
 
-# Configure live-build
-lb config --distribution bookworm --debian-installer none
+# Configure live-build with Debian Installer
+lb config --distribution bookworm --debian-installer live
 
 # Create the package list
 mkdir -p config/package-lists
@@ -25,8 +25,6 @@ fonts-firacode
 fonts-noto-color-emoji
 htop
 slick-greeter
-calamares
-calamares-settings-debian
 rxvt-unicode
 alsa-utils
 wget
@@ -59,7 +57,6 @@ cp -r /tmp/remaster/usr/share/backgrounds /usr/share/
 
 # Clean up
 rm -rf /tmp/remaster
-sudo apt-get install -y calamares grub-efi-amd64 grub-efi-amd64-bin grub-efi-amd64-signed
 EOF
 chmod +x config/hooks/live/99-custom-script.chroot
 
