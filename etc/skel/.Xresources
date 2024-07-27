@@ -6,7 +6,7 @@ URxvt*foreground: #f8f8f2
 URxvt*cursorColor: #f8f8f2
 
 ! Font
-URxvt*font: xft:Monospace:size=12
+URxvt*font: xft:Monospace:size=8
 
 ! Skema Warna
 URxvt*color0: #000000
