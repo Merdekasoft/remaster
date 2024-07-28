@@ -101,11 +101,11 @@ cat <<EOF > $HOOKS_DIR/01-set-hostname.chroot
 #!/bin/sh
 
 # Set the hostname
-echo "bee" > /etc/hostname
+echo "BEE" > /etc/hostname
 
 # Update /etc/hosts file
 cat <<EOL >> /etc/hosts
-127.0.0.1   bee
+127.0.0.1   BEE
 EOL
 EOF
 chmod +x $HOOKS_DIR/01-set-hostname.chroot
