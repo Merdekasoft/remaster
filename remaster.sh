@@ -110,8 +110,17 @@ EOL
 EOF
 chmod +x $HOOKS_DIR/01-set-hostname.chroot
 
+# Add firmware packages to Debian Installer
+INSTALLER_PKGS_DIR="config/package-lists/installer"
+if [ ! -d "$INSTALLER_PKGS_DIR" ]; then
+    mkdir -p $INSTALLER_PKGS_DIR
+fi
+cat <<EOF > $INSTALLER_PKGS_DIR/firmware.list.binary
+firmware-misc-nonfree
+EOF
+
 # Build the live system
 echo "Building the live system..."
 sudo lb build
 
-echo "Live-build process completed."
+echo "Live-build OK"
