@@ -37,7 +37,7 @@ sudo
 fonts-font-awesome
 picom
 numix-gtk-theme
-numix-icon-theme
+papirus-icon-theme
 lightdm
 xserver-xorg
 xinit
