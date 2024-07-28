@@ -89,7 +89,7 @@ fi
 update-grub
 
 # Modify LightDM configuration to show user list
-sed -i 's/^#greeter-hide-users=true/greeter-hide-users=false/' /usr/share/lightdm/lightdm.conf.d/01_debian.conf
+sed -i 's/^greeter-hide-users=true/greeter-hide-users=false/' /usr/share/lightdm/lightdm.conf.d/01_debian.conf
 
 # Clean up
 rm -rf /tmp/remaster
