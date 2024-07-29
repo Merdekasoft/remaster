@@ -45,6 +45,7 @@ lightdm
 xserver-xorg
 xinit
 git
+curl
 thunar
 fonts-firacode
 fonts-noto-color-emoji
