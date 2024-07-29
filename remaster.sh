@@ -35,6 +35,7 @@ cat <<EOF > $PKG_LIST_DIR/my.list.chroot
 i3
 sudo
 ssh
+python3-pip
 fonts-font-awesome
 picom
 numix-gtk-theme
