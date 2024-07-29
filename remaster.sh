@@ -44,6 +44,7 @@ lightdm
 xserver-xorg
 xinit
 evince
+ntp
 git
 geany
 curl
