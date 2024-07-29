@@ -3,7 +3,7 @@
 # Update and install live-build
 echo "Updating system and installing live-build..."
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install -y live-build
+sudo apt-get install -y live-build 
 
 # Set up live-build project directory
 PROJECT_DIR="live-build-project"
@@ -54,6 +54,8 @@ rxvt-unicode
 alsa-utils
 wget
 feh
+plymouth 
+plymouth-themes
 breeze-cursor-theme
 laptop-mode-tools
 network-manager
@@ -88,11 +90,19 @@ else
     echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
 fi
 
-# Update GRUB configuration
-update-grub
-
 # Modify LightDM configuration to show user list
 sed -i 's/^greeter-hide-users=true/greeter-hide-users=false/' /usr/share/lightdm/lightdm.conf.d/01_debian.conf
+
+# Enable Plymouth services
+systemctl enable plymouth-start.service
+systemctl enable plymouth-quit.service
+systemctl enable plymouth-quit-wait.service
+
+# Update GRUB configuration to include Plymouth
+sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' /etc/default/grub
+
+# Update GRUB configuration
+update-grub
 
 # Clean up
 rm -rf /tmp/remaster
@@ -126,4 +136,4 @@ EOF
 echo "Building the live system..."
 sudo lb build
 
-echo "Live-build OK"
+echo "Live-build OK. Plymouth has been installed and configured. Please reboot your system."
