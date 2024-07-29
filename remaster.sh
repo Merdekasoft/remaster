@@ -36,6 +36,7 @@ i3
 sudo
 ssh
 python3-pip
+python3-full
 fonts-font-awesome
 picom
 numix-gtk-theme
