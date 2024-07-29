@@ -34,6 +34,7 @@ fi
 cat <<EOF > $PKG_LIST_DIR/my.list.chroot
 i3
 sudo
+ssh
 fonts-font-awesome
 picom
 numix-gtk-theme
