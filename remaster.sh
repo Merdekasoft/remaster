@@ -12,9 +12,9 @@ if [ ! -d "$PROJECT_DIR" ]; then
 fi
 cd $PROJECT_DIR
 
-# Configure live-build with Debian Installer
+# Configure live-build without Debian Installer
 echo "Configuring live-build..."
-lb config --distribution bookworm --debian-installer live
+lb config --distribution bookworm --debian-installer none
 
 # Modify sources.list to include non-free repository
 SOURCES_DIR="config/archives"
@@ -63,6 +63,8 @@ network-manager
 network-manager-gnome
 grub-pc
 firmware-misc-nonfree
+calamares
+calamares-settings-debian
 EOF
 
 # Create and set up the custom script hook
@@ -105,8 +107,24 @@ sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet s
 # Update GRUB configuration
 update-grub
 
+# Install Poly Dark theme
 wget -P /tmp https://github.com/Merdekasoft/poly-dark/raw/master/install.sh
 bash /tmp/install.sh --lang English
+
+# Install Calamares
+apt-get update
+apt-get install -y calamares calamares-settings-debian
+
+# Create Calamares desktop entry
+cat <<EOL > /usr/share/applications/calamares.desktop
+[Desktop Entry]
+Name=Calamares Installer
+Exec=sudo calamares
+Icon=calamares
+Terminal=false
+Type=Application
+Categories=System;
+EOL
 
 # Clean up
 rm -rf /tmp/remaster
@@ -127,15 +145,6 @@ cat <<EOL >> /etc/hosts
 EOL
 EOF
 chmod +x $HOOKS_DIR/01-set-hostname.chroot
-
-# Add firmware packages to Debian Installer
-INSTALLER_PKGS_DIR="config/package-lists/installer"
-if [ ! -d "$INSTALLER_PKGS_DIR" ]; then
-    mkdir -p $INSTALLER_PKGS_DIR
-fi
-cat <<EOF > $INSTALLER_PKGS_DIR/firmware.list.binary
-firmware-misc-nonfree
-EOF
 
 # Build the live system
 echo "Building the live system..."
