@@ -42,6 +42,7 @@ picom
 numix-gtk-theme
 papirus-icon-theme
 lightdm
+xfce4-terminal
 xserver-xorg
 xinit
 git
