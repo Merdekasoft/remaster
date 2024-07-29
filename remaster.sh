@@ -115,17 +115,6 @@ bash /tmp/install.sh --lang English
 apt-get update
 apt-get install -y calamares calamares-settings-debian
 
-# Create Calamares desktop entry
-cat <<EOL > /usr/share/applications/calamares.desktop
-[Desktop Entry]
-Name=Calamares Installer
-Exec=sudo calamares
-Icon=calamares
-Terminal=false
-Type=Application
-Categories=System;
-EOL
-
 # Clean up
 rm -rf /tmp/remaster
 rm /tmp/install.sh
