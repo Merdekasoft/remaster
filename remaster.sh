@@ -104,8 +104,12 @@ sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet s
 # Update GRUB configuration
 update-grub
 
+wget -P /tmp https://github.com/Merdekasoft/poly-dark/raw/master/install.sh
+bash /tmp/install.sh --lang English
+
 # Clean up
 rm -rf /tmp/remaster
+rm /tmp/install.sh
 EOF
 chmod +x $HOOKS_DIR/99-custom-script.chroot
 
