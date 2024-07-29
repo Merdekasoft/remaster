@@ -34,7 +34,6 @@ fi
 cat <<EOF > $PKG_LIST_DIR/my.list.chroot
 i3
 sudo
-ssh
 python3-pip
 python3-full
 fonts-font-awesome
@@ -44,7 +43,9 @@ papirus-icon-theme
 lightdm
 xserver-xorg
 xinit
+evince
 git
+geany
 curl
 thunar
 fonts-firacode
