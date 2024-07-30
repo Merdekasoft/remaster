@@ -44,6 +44,7 @@ lightdm
 xserver-xorg
 xinit
 evince
+lxpolkit
 ntp
 git
 geany
