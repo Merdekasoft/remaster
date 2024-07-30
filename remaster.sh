@@ -49,7 +49,7 @@ ntp
 git
 geany
 curl
-thunar
+pcmanfm
 fonts-firacode
 fonts-noto-color-emoji
 htop
