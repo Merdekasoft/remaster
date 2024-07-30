@@ -38,6 +38,7 @@ python3-pip
 python3-full
 fonts-font-awesome
 picom
+materia-gtk-theme 
 numix-gtk-theme
 papirus-icon-theme
 lightdm
