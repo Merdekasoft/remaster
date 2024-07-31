@@ -1,4 +1,20 @@
-# This file is ~/.config/i3/config or ~/.i3/config
+# Color schemes for windows
+set $bgcolor    #2e3440
+set $in-bgcolor #3b4252
+set $text       #eceff4
+set $u-bgcolor  #bf616a
+set $indicator  #88c0d0
+set $in-text    #d8dee9
+
+# Additional color variables
+set $focused-ws #4c566a80
+set $bar-color  #4c566a0D
+
+#                       border          background      text            indicator (a line which shows where the next window will be placed)     
+client.focused          $bgcolor        $bgcolor        $text           $indicator
+client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
+client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
+client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
 
 # Set inner gap and outer gap
 gaps inner 10
@@ -20,9 +36,18 @@ floating_modifier $mod
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status
+    status_command i3status -c /home/$USER/.config/i3status/i3status.conf
     position top  # Set the panel to the top
     tray_output primary
+
+    colors {
+        background $bar-color
+        separator #3b4252
+        #                       border          background      text
+        focused_workspace       $focused-ws    $focused-ws    $text
+        inactive_workspace      $in-bgcolor     $in-bgcolor     $text
+        urgent_workspace        $u-bgcolor      $u-bgcolor      $text   
+    }
 }
 
 # Set background with feh
@@ -30,6 +55,43 @@ exec --no-startup-id feh --bg-scale /usr/share/backgrounds/Sophie-Bi.jpeg
 
 # Start nm-applet for WiFi management
 exec --no-startup-id nm-applet
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "A"
+set $ws2 "B"
+set $ws3 "C"
+set $ws4 "D"
+set $ws5 "E"
+set $ws6 "F"
+set $ws7 "G"
+set $ws8 "H"
+set $ws9 "I"
+set $ws10 "J"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Basic keybindings for window management
 # Open terminal
@@ -92,30 +154,6 @@ bindsym $mod+Control+Right workspace next
 # Move focused container to the workspace to the left/right
 bindsym $mod+Shift+Control+Left move container to workspace prev
 bindsym $mod+Shift+Control+Right move container to workspace next
-
-# Directly switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-
-# Move focused container to specific workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
 
 # Resize floating windows
 mode "resize" {
