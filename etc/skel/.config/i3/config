@@ -4,20 +4,18 @@ set $in-bgcolor #3b4252
 set $text       #eceff4
 set $u-bgcolor  #bf616a
 set $indicator  #88c0d0
-set $in-text    #d8dee9
 
 # Additional color variables
-set $focused-ws #4c566a80
-set $bar-color  #4c566a0D
+set $bar-color  #2e3440  # Same as $bgcolor for a unified look
 
 #                       border          background      text            indicator (a line which shows where the next window will be placed)     
 client.focused          $bgcolor        $bgcolor        $text           $indicator
-client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
-client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
+client.unfocused        $in-bgcolor     $in-bgcolor     $text           $in-bgcolor
+client.focused_inactive $in-bgcolor     $in-bgcolor     $text           $in-bgcolor
 client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
 
 # Set inner gap and outer gap
-gaps inner 10
+gaps inner 3
 gaps outer 0
 new_window 1pixel
 exec --no-startup-id picom -b
@@ -42,9 +40,9 @@ bar {
 
     colors {
         background $bar-color
-        separator #3b4252
+        separator $in-bgcolor
         #                       border          background      text
-        focused_workspace       $focused-ws    $focused-ws    $text
+        focused_workspace       $bgcolor        $bgcolor        $text
         inactive_workspace      $in-bgcolor     $in-bgcolor     $text
         urgent_workspace        $u-bgcolor      $u-bgcolor      $text   
     }
@@ -58,16 +56,16 @@ exec --no-startup-id nm-applet
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "A"
-set $ws2 "B"
-set $ws3 "C"
-set $ws4 "D"
-set $ws5 "E"
-set $ws6 "F"
-set $ws7 "G"
-set $ws8 "H"
-set $ws9 "I"
-set $ws10 "J"
+set $ws1 "B"
+set $ws2 "C"
+set $ws3 "D"
+set $ws4 "E"
+set $ws5 "F"
+set $ws6 "G"
+set $ws7 "H"
+set $ws8 "I"
+set $ws9 "J"
+set $ws10 "K"
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
