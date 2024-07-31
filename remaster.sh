@@ -54,6 +54,7 @@ pcmanfm
 fonts-firacode
 fonts-noto-color-emoji
 htop
+i3status
 slick-greeter
 rxvt-unicode
 alsa-utils
