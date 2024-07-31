@@ -23,7 +23,7 @@ exec --no-startup-id lxpolkit
 exec --no-startup-id ulauncher
 
 # Set mod key (Mod1 is usually Alt, Mod4 is usually the Super key or Windows key)
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
