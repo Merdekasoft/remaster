@@ -44,6 +44,7 @@ papirus-icon-theme
 lightdm
 xserver-xorg
 xinit
+man
 evince
 lxpolkit
 ntp
