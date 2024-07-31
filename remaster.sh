@@ -1,9 +1,20 @@
 #!/bin/bash
 
+# Function to check command success and exit on failure
+check_success() {
+    if [ $? -ne 0 ]; then
+        echo "Error occurred during: $1"
+        exit 1
+    fi
+}
+
 # Update and install live-build
 echo "Updating system and installing live-build..."
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install -y live-build 
+check_success "System update and upgrade"
+
+sudo apt-get install -y live-build git wget curl
+check_success "Installing live-build and dependencies"
 
 # Set up live-build project directory
 PROJECT_DIR="live-build-project"
@@ -15,6 +26,7 @@ cd $PROJECT_DIR
 # Configure live-build without Debian Installer
 echo "Configuring live-build..."
 lb config --distribution bookworm --debian-installer none
+check_success "Configuring live-build"
 
 # Modify sources.list to include non-free repository
 SOURCES_DIR="config/archives"
@@ -25,6 +37,7 @@ cat <<EOF > $SOURCES_DIR/my-sources.list.chroot
 deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
 EOF
+check_success "Modifying sources.list"
 
 # Create the package list
 PKG_LIST_DIR="config/package-lists"
@@ -72,6 +85,7 @@ firmware-misc-nonfree
 calamares
 calamares-settings-debian
 EOF
+check_success "Creating package list"
 
 # Create and set up the custom script hook
 HOOKS_DIR="config/hooks/live"
@@ -121,11 +135,17 @@ bash /tmp/install.sh --lang English
 apt-get update
 apt-get install -y calamares calamares-settings-debian
 
+# Download and install Ulauncher
+wget -P /tmp https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
+apt install -y /tmp/ulauncher_5.15.7_all.deb
+
 # Clean up
 rm -rf /tmp/remaster
 rm /tmp/install.sh
+rm /tmp/ulauncher_5.15.7_all.deb
 EOF
 chmod +x $HOOKS_DIR/99-custom-script.chroot
+check_success "Setting up custom script hook"
 
 # Hostname script hook
 cat <<EOF > $HOOKS_DIR/01-set-hostname.chroot
@@ -140,9 +160,11 @@ cat <<EOL >> /etc/hosts
 EOL
 EOF
 chmod +x $HOOKS_DIR/01-set-hostname.chroot
+check_success "Setting up hostname script hook"
 
 # Build the live system
 echo "Building the live system..."
 sudo lb build
+check_success "Building the live system"
 
 echo "Live-build OK. Plymouth has been installed and configured. Please reboot your system."
