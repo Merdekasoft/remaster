@@ -64,13 +64,13 @@ ntp
 git
 geany
 curl
-pcmanfm
+thunar
 fonts-firacode
 fonts-noto-color-emoji
 htop
 i3status
 slick-greeter
-rxvt-unicode
+xfce4-terminal
 alsa-utils
 wget
 feh
