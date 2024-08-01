@@ -8,19 +8,23 @@ check_success() {
     fi
 }
 
+# Ensure the script is running with root privileges
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
+fi
+
 # Update and install live-build
 echo "Updating system and installing live-build..."
-sudo apt-get update && sudo apt-get upgrade -y
+apt-get update && apt-get upgrade -y
 check_success "System update and upgrade"
 
-sudo apt-get install -y live-build git wget curl
+apt-get install -y live-build git wget curl
 check_success "Installing live-build and dependencies"
 
 # Set up live-build project directory
 PROJECT_DIR="live-build-project"
-if [ ! -d "$PROJECT_DIR" ]; then
-    mkdir -p $PROJECT_DIR
-fi
+mkdir -p $PROJECT_DIR
 cd $PROJECT_DIR
 
 # Configure live-build without Debian Installer
@@ -30,9 +34,7 @@ check_success "Configuring live-build"
 
 # Modify sources.list to include non-free repository
 SOURCES_DIR="config/archives"
-if [ ! -d "$SOURCES_DIR" ]; then
-    mkdir -p $SOURCES_DIR
-fi
+mkdir -p $SOURCES_DIR
 cat <<EOF > $SOURCES_DIR/my-sources.list.chroot
 deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
@@ -41,9 +43,7 @@ check_success "Modifying sources.list"
 
 # Create the package list
 PKG_LIST_DIR="config/package-lists"
-if [ ! -d "$PKG_LIST_DIR" ]; then
-    mkdir -p $PKG_LIST_DIR
-fi
+mkdir -p $PKG_LIST_DIR
 cat <<EOF > $PKG_LIST_DIR/my.list.chroot
 i3
 sudo
@@ -89,9 +89,7 @@ check_success "Creating package list"
 
 # Create and set up the custom script hook
 HOOKS_DIR="config/hooks/live"
-if [ ! -d "$HOOKS_DIR" ]; then
-    mkdir -p $HOOKS_DIR
-fi
+mkdir -p $HOOKS_DIR
 
 # Custom script hook
 cat <<EOF > $HOOKS_DIR/99-custom-script.chroot
@@ -164,7 +162,12 @@ check_success "Setting up hostname script hook"
 
 # Build the live system
 echo "Building the live system..."
-sudo lb build
+lb build
 check_success "Building the live system"
 
 echo "Live-build OK. Plymouth has been installed and configured. Please reboot your system."
+
+# Move the created ISO to the specified directory
+ISO_OUTPUT_DIR="/var/www/html/iso/"
+mv live-image-*.hybrid.iso $ISO_OUTPUT_DIR
+check_success "Moving ISO to $ISO_OUTPUT_DIR"
