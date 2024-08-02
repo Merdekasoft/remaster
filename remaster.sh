@@ -32,25 +32,14 @@ echo "Configuring live-build..."
 lb config --distribution bookworm --debian-installer none
 check_success "Configuring live-build"
 
-# Modify sources.list to include non-free repository
-SOURCES_DIR="config/archives"
-mkdir -p $SOURCES_DIR
-cat <<EOF > $SOURCES_DIR/my-sources.list.chroot
-deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-EOF
-check_success "Modifying sources.list"
-EOF
-check_success "Setting up hostname script hook"
-
 # Build the live system
 echo "Building the live system..."
 lb build
 check_success "Building the live system"
 
-echo "Live-build OK. Plymouth has been installed and configured. Please reboot your system."
-
 # Move the created ISO to the specified directory
 ISO_OUTPUT_DIR="/var/www/html/iso/"
 mv live-image-*.hybrid.iso $ISO_OUTPUT_DIR
 check_success "Moving ISO to $ISO_OUTPUT_DIR"
+
+echo "Live-build OK. Please reboot your system if necessary."
