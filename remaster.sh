@@ -145,7 +145,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/ulauncher --no-window-shadow
-Restart=always
+Restart=on-failure
 RestartSec=5
 
 [Install]
