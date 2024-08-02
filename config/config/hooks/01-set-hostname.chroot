@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Set the hostname
+echo "BEE" > /etc/hostname
+
+# Update /etc/hosts file
+cat <<EOL >> /etc/hosts
+127.0.0.1   BEE
+EOL
