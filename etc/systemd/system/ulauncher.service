@@ -1,0 +1,11 @@
+[Unit]
+Description=Ulauncher Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ulauncher --no-window-shadow
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
