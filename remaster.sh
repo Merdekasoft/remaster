@@ -137,20 +137,6 @@ apt-get install -y calamares calamares-settings-debian
 wget -P /tmp https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
 apt install -y /tmp/ulauncher_5.15.7_all.deb
 
-# Create Ulauncher systemd service
-cat <<EOF > /etc/systemd/system/ulauncher.service
-[Unit]
-Description=Ulauncher Service
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/ulauncher --no-window-shadow
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-EOF
 
 # Reload systemd and enable Ulauncher service
 systemctl daemon-reload
