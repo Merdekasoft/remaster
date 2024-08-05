@@ -1,6 +1,6 @@
 ![extension screenshot](https://i.imgur.com/dWB1VBo.png)
 
-# B OS
+# B Operating System
 
 B OS is a Linux distribution based on Debian Bookworm, featuring the i3 window manager and Ulauncher. This distribution is designed to offer a lightweight and functional user experience.
 
@@ -19,3 +19,13 @@ B OS is a Linux distribution based on Debian Bookworm, featuring the i3 window m
 
    ```sh
    git clone https://github.com/Merdekasoft/remaster.git
+
+2. Navigate to the remaster directory:
+
+   ```sh
+   cd remaster
+
+3. Run the remaster.sh script:
+   ```sh
+   sh remaster.sh
+
