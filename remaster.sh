@@ -27,6 +27,9 @@ echo "Configuring live-build..."
 lb config --distribution bookworm --debian-installer none
 check_success "Configuring live-build"
 
+
+chmod +x config/hooks/live/0100-copy-sources.hook.chroot
+
 # Build the live system
 echo "Building the live system..."
 lb build
