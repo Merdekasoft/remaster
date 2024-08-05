@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cp -f /config/archives/myarchive.list.chroot /etc/apt/sources.list
+apt-get update
