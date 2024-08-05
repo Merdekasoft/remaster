@@ -1,5 +1,23 @@
 #!/bin/sh
 
+# Add comprehensive sources.list
+cat <<EOL > /etc/apt/sources.list
+deb http://deb.debian.org/debian/ $(lsb_release -cs) main contrib non-free
+deb-src http://deb.debian.org/debian/ $(lsb_release -cs) main contrib non-free
+
+deb http://deb.debian.org/debian/ $(lsb_release -cs)-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ $(lsb_release -cs)-updates main contrib non-free
+
+deb http://deb.debian.org/debian-security/ $(lsb_release -cs)-security main contrib non-free
+deb-src http://deb.debian.org/debian-security/ $(lsb_release -cs)-security main contrib non-free
+
+deb http://deb.debian.org/debian/ $(lsb_release -cs)-backports main contrib non-free
+deb-src http://deb.debian.org/debian/ $(lsb_release -cs)-backports main contrib non-free
+EOL
+
+# Update package lists
+apt-get update
+
 # Clone the repository
 git clone https://github.com/Merdekasoft/remaster.git /tmp/remaster
 
@@ -12,7 +30,7 @@ cp -r /tmp/remaster/usr/share/backgrounds /usr/share/
 # Ensure GRUB_DISABLE_OS_PROBER=false is in GRUB config
 if grep -q '^#GRUB_DISABLE_OS_PROBER=false' /etc/default/grub; then
     sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/' /etc/default/grub
-else
+elif ! grep -q 'GRUB_DISABLE_OS_PROBER=false' /etc/default/grub; then
     echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
 fi
 
