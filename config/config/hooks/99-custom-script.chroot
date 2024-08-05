@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Remove existing sources.list
+rm -f /etc/apt/sources.list
+
 # Add comprehensive sources.list
 cat <<EOL > /etc/apt/sources.list
 deb http://deb.debian.org/debian/ $(lsb_release -cs) main contrib non-free
