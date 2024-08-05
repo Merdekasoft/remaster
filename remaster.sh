@@ -22,11 +22,6 @@ check_success "System update and upgrade"
 apt-get install -y live-build git wget curl
 check_success "Installing live-build and dependencies"
 
-# Set up live-build project directory
-PROJECT_DIR="live-build-project"
-mkdir -p $PROJECT_DIR
-cd $PROJECT_DIR
-
 # Configure live-build without Debian Installer
 echo "Configuring live-build..."
 lb config --distribution bookworm --debian-installer none
