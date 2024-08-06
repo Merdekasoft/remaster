@@ -8,7 +8,6 @@ check_success() {
     fi
 }
 
-
 # Update and install live-build
 echo "Updating system and installing live-build..."
 apt-get update && apt-get upgrade -y
@@ -62,8 +61,20 @@ lxpolkit
 ntp
 printer-driver-all
 git
-vim
+gimp
+inkscape
+eom
+libreoffice-gnome
+libreoffice-style-breeze
+libreoffice
+simple-scan
+flatpak
+leafpad
+vlc
+firefox-esr
 curl
+gdebi
+libfuse2
 pcmanfm
 fonts-firacode
 fonts-noto-color-emoji
