@@ -2,14 +2,14 @@
 workspace_layout tabbed
 
 # Color schemes for windows
-set $bgcolor    #2e3440
-set $in-bgcolor #3b4252
-set $text       #eceff4
-set $u-bgcolor  #bf616a
-set $indicator  #88c0d0
+set $bgcolor    #424242
+set $in-bgcolor #585858
+set $text       #e0e0e0
+set $u-bgcolor  #ff6c6b
+set $indicator  #9ecfdf
 
 # Additional color variables
-set $bar-color  #2e3440  # Same as $bgcolor for a unified look
+set $bar-color  #424242  # Same as $bgcolor for a unified look
 
 #                       border          background      text            indicator
 client.focused          $bgcolor        $bgcolor        $text           $indicator
@@ -21,22 +21,26 @@ client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcol
 gaps inner 3
 gaps outer 0
 new_window 1pixel
-exec --no-startup-id picom -b
+
+# Start picom with transparency settings
+exec --no-startup-id picom --config /home/$USER/.config/picom/picom.conf -b
+
+# Start lxpolkit for polkit
 exec --no-startup-id lxpolkit
+
+# Start Ulauncher
 exec --no-startup-id ulauncher
 
 # Set mod key to Alt (Mod1 key)
 set $mod Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# Font for window titles
 font pango:monospace 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Start i3bar to display a workspace bar
 bar {
     status_command i3status -c /home/$USER/.config/i3status/i3status.conf
     position top  # Set the panel to the top
@@ -58,8 +62,7 @@ exec --no-startup-id feh --bg-scale /usr/share/backgrounds/Sophie-Bi.jpeg
 # Start nm-applet for WiFi management
 exec --no-startup-id nm-applet
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Define names for default workspaces
 set $ws1 "B"
 set $ws2 "C"
 set $ws3 "D"
