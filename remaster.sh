@@ -8,11 +8,6 @@ check_success() {
     fi
 }
 
-# Ensure the script is running with root privileges
-if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root"
-    exit 1
-fi
 
 # Update and install live-build
 echo "Updating system and installing live-build..."
