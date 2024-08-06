@@ -56,6 +56,7 @@ numix-gtk-theme
 papirus-icon-theme
 lightdm
 xserver-xorg
+system-config-printer
 xinit
 man
 evince
