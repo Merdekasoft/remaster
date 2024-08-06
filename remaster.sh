@@ -69,7 +69,7 @@ libreoffice-style-breeze
 libreoffice
 simple-scan
 flatpak
-leafpad
+vim
 vlc
 firefox-esr
 curl
