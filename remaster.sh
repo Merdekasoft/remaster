@@ -60,6 +60,7 @@ man
 evince
 lxpolkit
 ntp
+printer-driver-all
 git
 vim
 curl
