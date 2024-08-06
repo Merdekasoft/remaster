@@ -56,6 +56,7 @@ numix-gtk-theme
 papirus-icon-theme
 lightdm
 xserver-xorg
+lxappearance
 system-config-printer
 xinit
 rxvt-unicode
