@@ -60,7 +60,7 @@ evince
 lxpolkit
 ntp
 git
-geany
+vim
 curl
 pcmanfm
 fonts-firacode
