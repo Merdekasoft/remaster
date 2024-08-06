@@ -58,6 +58,7 @@ lightdm
 xserver-xorg
 system-config-printer
 xinit
+rxvt-unicode
 man
 evince
 lxpolkit
@@ -65,13 +66,13 @@ ntp
 git
 geany
 curl
-thunar
+pcmanfm
 fonts-firacode
 fonts-noto-color-emoji
 htop
 i3status
 slick-greeter
-xfce4-terminal
+flameshot
 alsa-utils
 wget
 feh
