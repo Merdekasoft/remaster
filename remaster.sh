@@ -54,7 +54,7 @@ xserver-xorg
 lxappearance
 system-config-printer
 xinit
-nomacs
+synaptic
 rxvt-unicode
 man
 evince
