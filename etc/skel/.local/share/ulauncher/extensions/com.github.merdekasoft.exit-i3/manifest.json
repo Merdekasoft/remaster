@@ -1,0 +1,34 @@
+{
+  "required_api_version": "^2.0.0",
+  "name": "Exit i3",
+  "description": "Session logout functions for i3 desktop.",
+  "developer_name": "Merdekasoft",
+  "icon": "images/exit.png",
+  "version": "3.0.1",
+  "options": {
+    "query_debounce": 0.1
+  },
+  "preferences": [
+    {
+      "id": "exit_ext",
+      "type": "keyword",
+      "name": "Exit i3",
+      "description": "Session logout functions for i3 desktop.",
+      "default_value": "exit"
+    },
+    {
+      "id": "restart_ext",
+      "type": "keyword",
+      "name": "Restart i3",
+      "description": "Restart the computer.",
+      "default_value": "restart"
+    },
+    {
+      "id": "shutdown_ext",
+      "type": "keyword",
+      "name": "Shutdown i3",
+      "description": "Shutdown the computer.",
+      "default_value": "shutdown"
+    }
+  ]
+}
