@@ -56,6 +56,7 @@ xinit
 synaptic
 rxvt-unicode
 man
+featherpad
 evince
 lxpolkit
 ntp
