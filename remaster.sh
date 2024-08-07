@@ -64,7 +64,6 @@ git
 gimp
 inkscape
 lximage-qt
-libreoffice-gnome
 libreoffice-style-breeze
 libreoffice
 simple-scan
