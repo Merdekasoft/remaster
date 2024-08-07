@@ -63,7 +63,7 @@ printer-driver-all
 git
 gimp
 inkscape
-eom
+lximage-qt
 libreoffice-gnome
 libreoffice-style-breeze
 libreoffice
