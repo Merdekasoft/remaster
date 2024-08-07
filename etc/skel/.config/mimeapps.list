@@ -5,6 +5,9 @@ image/gif=lximage-qt.desktop
 image/bmp=lximage-qt.desktop
 image/tiff=lximage-qt.desktop
 application/pdf=evince.desktop
+text/plain=featherpad.desktop
+text/html=featherpad.desktop
+text/x-shellscript=featherpad.desktop
 
 [Added Associations]
 image/jpeg=lximage-qt.desktop;
@@ -13,3 +16,6 @@ image/gif=lximage-qt.desktop;
 image/bmp=lximage-qt.desktop;
 image/tiff=lximage-qt.desktop;
 application/pdf=evince.desktop;
+text/plain=featherpad.desktop;
+text/html=featherpad.desktop;
+text/x-shellscript=featherpad.desktop;
