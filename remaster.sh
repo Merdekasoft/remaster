@@ -58,6 +58,7 @@ rxvt-unicode
 man
 featherpad
 evince
+file-roller
 lxpolkit
 ntp
 printer-driver-all
