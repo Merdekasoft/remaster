@@ -72,7 +72,6 @@ vim
 vlc
 firefox-esr
 curl
-gdebi
 libfuse2
 pcmanfm
 fonts-firacode
