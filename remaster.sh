@@ -51,7 +51,6 @@ papirus-icon-theme
 lightdm
 xserver-xorg
 lxappearance
-system-config-printer
 xinit
 synaptic
 rxvt-unicode
@@ -61,7 +60,6 @@ evince
 file-roller
 lxpolkit
 ntp
-printer-driver-all
 git
 gimp
 inkscape
