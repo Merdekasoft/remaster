@@ -103,7 +103,7 @@ bindsym $mod+F10 move container to workspace $ws10
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Kill focused window
-bindsym $mod+Shift+q kill
+bindsym Control+q kill
 
 # Start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
