@@ -28,3 +28,9 @@ URxvt*color15: #ffffff
 
 ! Hilangkan Scrollbar
 URxvt*scrollBar: false
+
+URxvt*perl-ext-common: default,clipboard
+URxvt.keysym.C-Insert: eval:selection_to_clipboard
+URxvt.keysym.S-Insert: eval:paste_clipboard
+URxvt.keysym.M-c: eval:selection_to_clipboard
+URxvt.keysym.M-v: eval:paste_clipboard
