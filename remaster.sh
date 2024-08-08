@@ -61,7 +61,6 @@ file-roller
 lxpolkit
 ntp
 git
-gimp
 inkscape
 lximage-qt
 libreoffice-style-breeze
