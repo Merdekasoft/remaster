@@ -74,29 +74,29 @@ set $ws8 "I"
 set $ws9 "J"
 set $ws10 "K"
 
-# Switch to workspace (using F1 to F10)
-bindsym F1 workspace $ws1
-bindsym F2 workspace $ws2
-bindsym F3 workspace $ws3
-bindsym F4 workspace $ws4
-bindsym F5 workspace $ws5
-bindsym F6 workspace $ws6
-bindsym F7 workspace $ws7
-bindsym F8 workspace $ws8
-bindsym F9 workspace $ws9
-bindsym F10 workspace $ws10
+# Switch to workspace (using Control+F1 to Control+F10)
+bindsym Control+F1 workspace $ws1
+bindsym Control+F2 workspace $ws2
+bindsym Control+F3 workspace $ws3
+bindsym Control+F4 workspace $ws4
+bindsym Control+F5 workspace $ws5
+bindsym Control+F6 workspace $ws6
+bindsym Control+F7 workspace $ws7
+bindsym Control+F8 workspace $ws8
+bindsym Control+F9 workspace $ws9
+bindsym Control+F10 workspace $ws10
 
-# Move focused container to workspace (using Mod1+F1 to F10)
-bindsym $mod+F1 move container to workspace $ws1
-bindsym $mod+F2 move container to workspace $ws2
-bindsym $mod+F3 move container to workspace $ws3
-bindsym $mod+F4 move container to workspace $ws4
-bindsym $mod+F5 move container to workspace $ws5
-bindsym $mod+F6 move container to workspace $ws6
-bindsym $mod+F7 move container to workspace $ws7
-bindsym $mod+F8 move container to workspace $ws8
-bindsym $mod+F9 move container to workspace $ws9
-bindsym $mod+F10 move container to workspace $ws10
+# Move focused container to workspace (using Shift+F1 to Shift+F10)
+bindsym Shift+F1 move container to workspace $ws1
+bindsym Shift+F2 move container to workspace $ws2
+bindsym Shift+F3 move container to workspace $ws3
+bindsym Shift+F4 move container to workspace $ws4
+bindsym Shift+F5 move container to workspace $ws5
+bindsym Shift+F6 move container to workspace $ws6
+bindsym Shift+F7 move container to workspace $ws7
+bindsym Shift+F8 move container to workspace $ws8
+bindsym Shift+F9 move container to workspace $ws9
+bindsym Shift+F10 move container to workspace $ws10
 
 # Basic keybindings for window management
 # Open terminal
