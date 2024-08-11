@@ -63,8 +63,6 @@ ntp
 git
 inkscape
 lximage-qt
-libreoffice-style-breeze
-libreoffice
 simple-scan
 flatpak
 vim
