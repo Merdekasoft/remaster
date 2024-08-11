@@ -146,13 +146,9 @@ apt-get install -y calamares calamares-settings-debian
 wget -P /tmp https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
 apt install -y /tmp/ulauncher_5.15.7_all.deb
 
-# Add ONLYOFFICE repository and GPG key
-wget -qO - https://download.onlyoffice.com/repo/onlyoffice.key | apt-key add -
-echo "deb https://download.onlyoffice.com/repo/debian squeeze main" > /etc/apt/sources.list.d/onlyoffice.list
-
-# Update package list and install ONLYOFFICE
-apt-get update
-apt-get install -y onlyoffice-desktopeditors
+# Download and install ONLYOFFICE
+wget -P /tmp https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+apt install -y /tmp/onlyoffice-desktopeditors_amd64.deb
 
 # Reload systemd and enable Ulauncher service
 systemctl daemon-reload
@@ -163,6 +159,7 @@ systemctl start ulauncher.service
 rm -rf /tmp/remaster
 rm /tmp/install.sh
 rm /tmp/ulauncher_5.15.7_all.deb
+rm /tmp/onlyoffice-desktopeditors_amd64.deb
 EOF
 chmod +x $HOOKS_DIR/99-custom-script.chroot
 check_success "Setting up custom script hook"
@@ -172,11 +169,11 @@ cat <<EOF > $HOOKS_DIR/01-set-hostname.chroot
 #!/bin/sh
 
 # Set the hostname
-echo "BEE" > /etc/hostname
+echo "io" > /etc/hostname
 
 # Update /etc/hosts file
 cat <<EOL >> /etc/hosts
-127.0.0.1   BEE
+127.0.0.1   io
 EOL
 EOF
 chmod +x $HOOKS_DIR/01-set-hostname.chroot
