@@ -26,12 +26,16 @@ echo "Configuring live-build..."
 lb config --distribution bookworm --debian-installer none
 check_success "Configuring live-build"
 
-# Modify sources.list to include non-free repository
+# Modify sources.list to include non-free and contrib repository
 SOURCES_DIR="config/archives"
 mkdir -p $SOURCES_DIR
 cat <<EOF > $SOURCES_DIR/my-sources.list.chroot
 deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
 EOF
 check_success "Modifying sources.list"
 
@@ -67,7 +71,6 @@ simple-scan
 flatpak
 vim
 vlc
-firefox-esr
 curl
 libfuse2
 pcmanfm
@@ -143,6 +146,13 @@ apt-get install -y calamares calamares-settings-debian
 wget -P /tmp https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
 apt install -y /tmp/ulauncher_5.15.7_all.deb
 
+# Add ONLYOFFICE repository and GPG key
+wget -qO - https://download.onlyoffice.com/repo/onlyoffice.key | apt-key add -
+echo "deb https://download.onlyoffice.com/repo/debian squeeze main" > /etc/apt/sources.list.d/onlyoffice.list
+
+# Update package list and install ONLYOFFICE
+apt-get update
+apt-get install -y onlyoffice-desktopeditors
 
 # Reload systemd and enable Ulauncher service
 systemctl daemon-reload
@@ -177,7 +187,7 @@ echo "Building the live system..."
 lb build
 check_success "Building the live system"
 
-echo "Live-build OK. Plymouth has been installed and configured. Please reboot your system."
+echo "Live-build OK. Plymouth and ONLYOFFICE have been installed and configured. Please reboot your system."
 
 # Move the created ISO to the specified directory
 ISO_OUTPUT_DIR="/var/www/html/iso/"
