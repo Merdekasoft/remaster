@@ -49,7 +49,7 @@ python3-pip
 python3-full
 fonts-font-awesome
 picom
-materia-gtk-theme 
+materia-gtk-theme
 numix-gtk-theme
 papirus-icon-theme
 lightdm
@@ -83,7 +83,7 @@ flameshot
 alsa-utils
 wget
 feh
-plymouth 
+plymouth
 plymouth-themes
 breeze-cursor-theme
 laptop-mode-tools
@@ -94,6 +94,25 @@ firmware-misc-nonfree
 calamares
 calamares-settings-debian
 rofi
+alacritty
+thunar
+geany
+ranger
+pkexec
+firefox-esr
+ncmpcpp
+xfce4-settings
+acpi
+powertop
+xfce4-power-manager
+light
+mpd
+mpc
+systemd
+maim
+x11-xserver-utils
+dunst
+xclip
 EOF
 check_success "Creating package list"
 
