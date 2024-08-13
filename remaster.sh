@@ -93,6 +93,7 @@ grub-pc
 firmware-misc-nonfree
 calamares
 calamares-settings-debian
+rofi
 EOF
 check_success "Creating package list"
 
@@ -121,72 +122,4 @@ else
 fi
 
 # Modify LightDM configuration to show user list
-sed -i 's/^greeter-hide-users=true/greeter-hide-users=false/' /usr/share/lightdm/lightdm.conf.d/01_debian.conf
-
-# Enable Plymouth services
-systemctl enable plymouth-start.service
-systemctl enable plymouth-quit.service
-systemctl enable plymouth-quit-wait.service
-
-# Update GRUB configuration to include Plymouth
-sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' /etc/default/grub
-
-# Update GRUB configuration
-update-grub
-
-# Install Poly Dark theme
-wget -P /tmp https://github.com/Merdekasoft/poly-dark/raw/master/install.sh
-bash /tmp/install.sh --lang English
-
-# Install Calamares
-apt-get update
-apt-get install -y calamares calamares-settings-debian
-
-# Download and install Ulauncher
-wget -P /tmp https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
-apt install -y /tmp/ulauncher_5.15.7_all.deb
-
-# Download and install ONLYOFFICE
-wget -P /tmp https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
-apt install -y /tmp/onlyoffice-desktopeditors_amd64.deb
-
-# Reload systemd and enable Ulauncher service
-systemctl daemon-reload
-systemctl enable ulauncher.service
-systemctl start ulauncher.service
-
-# Clean up
-rm -rf /tmp/remaster
-rm /tmp/install.sh
-rm /tmp/ulauncher_5.15.7_all.deb
-rm /tmp/onlyoffice-desktopeditors_amd64.deb
-EOF
-chmod +x $HOOKS_DIR/99-custom-script.chroot
-check_success "Setting up custom script hook"
-
-# Hostname script hook
-cat <<EOF > $HOOKS_DIR/01-set-hostname.chroot
-#!/bin/sh
-
-# Set the hostname
-echo "io" > /etc/hostname
-
-# Update /etc/hosts file
-cat <<EOL >> /etc/hosts
-127.0.0.1   io
-EOL
-EOF
-chmod +x $HOOKS_DIR/01-set-hostname.chroot
-check_success "Setting up hostname script hook"
-
-# Build the live system
-echo "Building the live system..."
-lb build
-check_success "Building the live system"
-
-echo "Live-build OK. Plymouth and ONLYOFFICE have been installed and configured. Please reboot your system."
-
-# Move the created ISO to the specified directory
-ISO_OUTPUT_DIR="/var/www/html/iso/"
-mv live-image-*.hybrid.iso $ISO_OUTPUT_DIR
-check_success "Moving ISO to $ISO_OUTPUT_DIR"
+sed -i 's/^greeter-hide-users=true/greeter-hide-users=false/' /usr/share/lightdm
