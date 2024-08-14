@@ -95,8 +95,6 @@ calamares
 calamares-settings-debian
 rofi
 alacritty
-thunar
-geany
 ranger
 pkexec
 firefox-esr
