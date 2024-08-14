@@ -23,19 +23,19 @@ cd $PROJECT_DIR
 
 # Configure live-build without Debian Installer
 echo "Configuring live-build..."
-lb config --distribution bookworm --debian-installer none
+lb config --distribution trixie --debian-installer none
 check_success "Configuring live-build"
 
 # Modify sources.list to include non-free and contrib repository
 SOURCES_DIR="config/archives"
 mkdir -p $SOURCES_DIR
 cat <<EOF > $SOURCES_DIR/my-sources.list.chroot
-deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian-security/ trixie-security main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian-security/ trixie-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
 EOF
 check_success "Modifying sources.list"
 
@@ -166,10 +166,15 @@ apt-get install -y calamares calamares-settings-debian
 wget -P /tmp https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
 apt install -y /tmp/onlyoffice-desktopeditors_amd64.deb
 
+# Install Ulauncher
+wget -P /tmp https://github.com/Ulauncher/Ulauncher/releases/download/v6.0.0-beta15/ulauncher_6.0.0.beta15_all.deb
+apt install -y /tmp/ulauncher_6.0.0.beta15_all.deb
+
 # Clean up
 rm -rf /tmp/remaster
 rm /tmp/install.sh
 rm /tmp/onlyoffice-desktopeditors_amd64.deb
+rm /tmp/ulauncher_6.0.0.beta15_all.deb
 EOF
 chmod +x $HOOKS_DIR/99-custom-script.chroot
 check_success "Setting up custom script hook"
@@ -194,7 +199,7 @@ echo "Building the live system..."
 lb build
 check_success "Building the live system"
 
-echo "Live-build OK. Plymouth and ONLYOFFICE have been installed and configured. Please reboot your system."
+echo "Live-build OK. Plymouth, ONLYOFFICE, and Ulauncher have been installed and configured. Please reboot your system."
 
 # Move the created ISO to the specified directory
 ISO_OUTPUT_DIR="/var/www/html/iso/"
