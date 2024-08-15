@@ -172,15 +172,10 @@ apt-get install -y calamares calamares-settings-debian
 wget -P /tmp https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
 apt install -y /tmp/onlyoffice-desktopeditors_amd64.deb
 
-# Install Ulauncher
-wget -P /tmp https://github.com/Ulauncher/Ulauncher/releases/download/v6.0.0-beta15/ulauncher_6.0.0.beta15_all.deb
-apt install -y /tmp/ulauncher_6.0.0.beta15_all.deb
-
 # Clean up
 rm -rf /tmp/remaster
 rm /tmp/install.sh
 rm /tmp/onlyoffice-desktopeditors_amd64.deb
-rm /tmp/ulauncher_6.0.0.beta15_all.deb
 EOF
 chmod +x $HOOKS_DIR/99-custom-script.chroot
 check_success "Setting up custom script hook"
@@ -205,7 +200,7 @@ echo "Building the live system..."
 lb build
 check_success "Building the live system"
 
-echo "Live-build OK. Plymouth, ONLYOFFICE, and Ulauncher have been installed and configured. Please reboot your system."
+echo "Live-build OK. Plymouth, ONLYOFFICE, and Calamares have been installed and configured. Please reboot your system."
 
 # Move the created ISO to the specified directory
 ISO_OUTPUT_DIR="/var/www/html/iso/"
