@@ -43,6 +43,7 @@ check_success "Modifying sources.list"
 PKG_LIST_DIR="config/package-lists"
 mkdir -p $PKG_LIST_DIR
 cat <<EOF > $PKG_LIST_DIR/my.list.chroot
+# Essential packages
 i3
 sudo
 python3-pip
@@ -112,6 +113,12 @@ maim
 x11-xserver-utils
 dunst
 xclip
+
+# GPU drivers
+xserver-xorg-video-fbdev     # Generic fallback
+xserver-xorg-video-vesa      # Generic fallback
+xserver-xorg-video-nouveau   # For NVIDIA
+xserver-xorg-video-amdgpu    # For AMD
 EOF
 check_success "Creating package list"
 
