@@ -113,10 +113,6 @@ maim
 x11-xserver-utils
 dunst
 xclip
-xserver-xorg-video-fbdev
-xserver-xorg-video-vesa
-xserver-xorg-video-nouveau
-xserver-xorg-video-amdgpu
 EOF
 check_success "Creating package list"
 
