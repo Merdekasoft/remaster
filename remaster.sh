@@ -113,12 +113,10 @@ maim
 x11-xserver-utils
 dunst
 xclip
-
-# GPU drivers
-xserver-xorg-video-fbdev     # Generic fallback
-xserver-xorg-video-vesa      # Generic fallback
-xserver-xorg-video-nouveau   # For NVIDIA
-xserver-xorg-video-amdgpu    # For AMD
+xserver-xorg-video-fbdev
+xserver-xorg-video-vesa
+xserver-xorg-video-nouveau
+xserver-xorg-video-amdgpu
 EOF
 check_success "Creating package list"
 
