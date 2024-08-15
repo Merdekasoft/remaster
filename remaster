@@ -43,76 +43,63 @@ check_success "Modifying sources.list"
 PKG_LIST_DIR="config/package-lists"
 mkdir -p $PKG_LIST_DIR
 cat <<EOF > $PKG_LIST_DIR/my.list.chroot
-# Essential packages
-i3
-sudo
-python3-pip
-python3-full
-fonts-font-awesome
-picom
-materia-gtk-theme
-numix-gtk-theme
-papirus-icon-theme
-lightdm
-xserver-xorg
-lxappearance
-xinit
-synaptic
-rxvt-unicode
-man
-featherpad
-evince
-file-roller
-lxpolkit
-ntp
-git
-inkscape
-lximage-qt
-simple-scan
-flatpak
-vim
-vlc
-curl
-libfuse2
-pcmanfm
-fonts-firacode
-fonts-noto-color-emoji
-htop
-i3status
-slick-greeter
-flameshot
+acpi
 alsa-utils
-wget
-feh
-plymouth
-plymouth-themes
+bb
 breeze-cursor-theme
-laptop-mode-tools
-network-manager
-network-manager-gnome
-grub-pc
-firmware-misc-nonfree
 calamares
 calamares-settings-debian
-rofi
-alacritty
-ranger
-pkexec
-firefox-esr
-ncmpcpp
-xfce4-settings
-acpi
-powertop
-xfce4-power-manager
-light
-mpd
 chntpw
-mpc
-systemd
-maim
-x11-xserver-utils
+curl
 dunst
+evince
+feh
+file-roller
+firmware-misc-nonfree
+fonts-firacode
+fonts-font-awesome
+fonts-noto-color-emoji
+git
+grub-pc
+htop
+i3
+i3status
+light
+lightdm
+libfuse2
+laptop-mode-tools
+lximage-qt
+lxpolkit
+man
+maim
+materia-gtk-theme
+mpc
+mpd
+ncmpcpp
+network-manager
+network-manager-gnome
+ntp
+numix-gtk-theme
+papirus-icon-theme
+pcmanfm
+picom
+pkexec
+plymouth
+plymouth-themes
+polybar
+powertop
+ranger
+rofi
+rxvt-unicode
+slick-greeter
+sudo
+systemd
+vim
+wget
+x11-xserver-utils
 xclip
+xinit
+xserver-xorg
 EOF
 check_success "Creating package list"
 
@@ -163,13 +150,30 @@ apt-get update
 apt-get install -y calamares calamares-settings-debian
 
 # Install ONLYOFFICE
-wget -P /tmp https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
-apt install -y /tmp/onlyoffice-desktopeditors_amd64.deb
+#wget -P /tmp https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+#apt install -y /tmp/onlyoffice-desktopeditors_amd64.deb
+
+# Polybar setup
+mkdir -p /etc/skel/.config/polybar
+cat <<EOL > /etc/skel/.config/polybar/config.ini
+[bar/mybar]
+width = 100%
+height = 30
+background = #222
+foreground = #fff
+
+[module/rofi]
+type = custom/script
+exec = rofi -show run
+click-left = rofi -show run
+
+# Add more Polybar modules here
+EOL
 
 # Clean up
 rm -rf /tmp/remaster
 rm /tmp/install.sh
-rm /tmp/onlyoffice-desktopeditors_amd64.deb
+rm -rf /tmp/onlyoffice-desktopeditors_amd64.deb
 EOF
 chmod +x $HOOKS_DIR/99-custom-script.chroot
 check_success "Setting up custom script hook"
