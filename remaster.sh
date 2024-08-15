@@ -105,6 +105,7 @@ powertop
 xfce4-power-manager
 light
 mpd
+chntpw
 mpc
 systemd
 maim
