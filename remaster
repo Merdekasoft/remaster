@@ -68,6 +68,7 @@ i3
 i3status
 light
 lightdm
+grub-customizer
 libfuse2
 laptop-mode-tools
 lximage-qt
