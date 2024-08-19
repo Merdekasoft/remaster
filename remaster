@@ -47,6 +47,7 @@ acpi
 alsa-utils
 bb
 breeze-cursor-theme
+breeze-icon-theme
 calamares
 calamares-settings-debian
 chntpw
@@ -64,7 +65,6 @@ grub-pc
 htop
 i3
 i3status
-i3lock-fancy
 light
 lightdm
 libfuse2
@@ -81,7 +81,7 @@ network-manager
 ntp
 numix-gtk-theme
 papirus-icon-theme
-pcmanfm
+dolphin
 picom
 pkexec
 plymouth
@@ -90,7 +90,6 @@ polybar
 powertop
 ranger
 rofi
-rxvt-unicode
 slick-greeter
 sudo
 systemd
