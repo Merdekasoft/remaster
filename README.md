@@ -27,6 +27,7 @@ cd remaster
 Execute the remaster script to apply customizations to your B OS installation:
 
 ```bash
+chmod +x remaster
 ./remaster
 ```
 
