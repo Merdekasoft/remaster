@@ -1,31 +1,24 @@
 ![extension screenshot](https://i.imgur.com/DKarHNW.png)
+# B OS - A Customized Debian 13 Distribution
 
-# B Operating System
+Welcome to **B OS**! B OS is a Linux distribution built upon Debian 13, featuring a sleek and minimalistic environment tailored for efficiency and aesthetics. It includes the i3 window manager, Polybar for a customizable status bar, Rofi as an application launcher, and Dolphin as the default file manager.
 
-B OS is a Linux distribution based on Debian Bookworm, featuring the i3 window manager and Ulauncher. This distribution is designed to offer a lightweight and functional user experience.
+## Features
 
-## Key Features
+- **Debian 13 Base:** Codename trixie.
+- **i3 Window Manager:** A tiling window manager designed for high performance and efficiency.
+- **Polybar:** A highly customizable status bar to enhance your desktop experience.
+- **Rofi:** A powerful and flexible application launcher.
+- **Dolphin:** A user-friendly and feature-rich file manager.
 
-- **i3 Window Manager**: A lightweight and efficient window manager.
-- **Ulauncher**: A fast and customizable application launcher.
-- **Calamares Installer**: An easy-to-use installer to install the system onto a hard drive.
-- **Themes and Icons**: Includes Materia GTK theme, Papirus icon theme, and Breeze cursor theme.
-- **Applications**: Includes applications like Evince for viewing PDF documents, Geany as a text editor, Thunar as a file manager, and more.
-- **Utilities**: Packages like Network Manager, Htop, Git, and more to enhance productivity and system management.
+## Getting Started
 
-## Installation
+To get started with B OS and customize it according to your preferences, follow these steps:
 
-1. Clone this repository:
+### 1. Clone the Repository
 
-   ```sh
-   git clone https://github.com/Merdekasoft/remaster.git
+Clone the repository to your local machine using the following command:
 
-2. Navigate to the remaster directory:
-
-   ```sh
-   cd remaster
-
-3. Run the remaster.sh script:
-   ```sh
-   sh remaster.sh
-
+```bash
+git clone https://github.com/Merdekasoft/remaster.git
+cd remaster
