@@ -1,4 +1,4 @@
-![extension screenshot](https://i.imgur.com/dWB1VBo.png)
+![extension screenshot](https://i.imgur.com/DKarHNW.png)
 
 # B Operating System
 
