@@ -2,17 +2,17 @@
 workspace_layout tabbed
 
 # Color schemes for windows
-set $bgcolor    #424242
-set $in-bgcolor #585858
-set $text       #e0e0e0
+set $bgcolor    #e0e0e0
+set $in-bgcolor #b1b1b1
+set $text       #1c1c1c
 set $u-bgcolor  #ff6c6b
-set $indicator  #9ecfdf
+set $indicator  #3391d3
 
 # Additional color variables
-set $bar-color  #424242  # Same as $bgcolor for a unified look
+set $bar-color  #e0e0e0  # Same as $bgcolor for a unified look
 
 #                       border          background      text            indicator
-client.focused          $bgcolor        $bgcolor        $text           $indicator
+client.focused          $indicator      $bgcolor        $text           $indicator
 client.unfocused        $in-bgcolor     $in-bgcolor     $text           $in-bgcolor
 client.focused_inactive $in-bgcolor     $in-bgcolor     $text           $in-bgcolor
 client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
@@ -40,27 +40,11 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Start i3bar to display a workspace bar
-bar {
-    status_command i3status -c /home/$USER/.config/i3status/i3status.conf
-    position top  # Set the panel to the top
-    tray_output primary
-
-    colors {
-        background $bar-color
-        separator $in-bgcolor
-        #                       border          background      text
-        focused_workspace       $bgcolor        $bgcolor        $text
-        inactive_workspace      $in-bgcolor     $in-bgcolor     $text
-        urgent_workspace        $u-bgcolor      $u-bgcolor      $text   
-    }
-}
-
 # Set background with feh
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/Sophie-Bi.jpeg
 
-# Start nm-applet for WiFi management
-exec --no-startup-id nm-applet
+# Enable tapping on the touchpad
+exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 
 # Define names for default workspaces
 set $ws1 "B"
@@ -104,12 +88,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # Kill focused window
 bindsym Control+q kill
-
-# Start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-
-# Toggle Ulauncher
-bindsym $mod+Shift+u exec ulauncher-toggle
 
 # Change focus with hjkl
 bindsym $mod+j focus left
@@ -193,3 +171,17 @@ bindsym $mod+Shift+c reload
 
 # Restart i3 in place (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
+# Replace i3bar with Polybar
+exec_always --no-startup-id ~/.config/polybar/panels/launch.sh
+
+# Bind Super key to open Polybar script
+bindsym Super_L exec ~/.config/rofi/launchers/type-6/launcher.sh
+
+# GNOME Screenshot shortcuts without using Mod key
+bindsym Print exec gnome-screenshot -i                      # Interactive screenshot
+bindsym Shift+Print exec gnome-screenshot                   # Fullscreen screenshot
+bindsym Control+Print exec gnome-screenshot -a              # Area screenshot
+
+# Bind Super key + Shift to open Rofi launcher
+bindsym Super+Shift+Return exec rofi -show drun
