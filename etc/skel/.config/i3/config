@@ -28,9 +28,6 @@ exec --no-startup-id picom --config /home/$USER/.config/picom/picom.conf -b
 # Start lxpolkit for polkit
 exec --no-startup-id lxpolkit
 
-# Start Ulauncher
-exec --no-startup-id ulauncher
-
 # Set mod key to Alt (Mod1 key)
 set $mod Mod1
 
@@ -43,8 +40,11 @@ floating_modifier $mod
 # Set background with feh
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/Sophie-Bi.jpeg
 
-# Enable tapping on the touchpad
-exec xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+# Alt+Tab to switch to the next window
+bindsym Mod1+Tab focus right
+
+# Shift+Alt+Tab to switch to the previous window
+bindsym Shift+Mod1+Tab focus left
 
 # Define names for default workspaces
 set $ws1 "B"
@@ -88,12 +88,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # Kill focused window
 bindsym Control+q kill
-
-# Change focus with hjkl
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+F4 kill
 
 # Change focus with arrow keys
 bindsym $mod+Left focus left
@@ -101,26 +96,14 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Move focused window with hjkl
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
 # Move focused window with arrow keys
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Split in horizontal orientation
-bindsym $mod+h split h
-
-# Split in vertical orientation
-bindsym $mod+v split v
-
 # Fullscreen mode toggle
-bindsym $mod+f fullscreen toggle
+bindsym F11 fullscreen toggle
 
 # Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -173,15 +156,13 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Replace i3bar with Polybar
-exec_always --no-startup-id ~/.config/polybar/panels/launch.sh
+exec_always --no-startup-id ~/.config/polybar/i3/launch.sh
 
 # Bind Super key to open Polybar script
-bindsym Super_L exec ~/.config/rofi/launchers/type-6/launcher.sh
+bindsym Super_L exec ~/.config/polybar/i3/scripts/launcher.sh
+bindsym Super_R exec ~/.config/polybar/i3/scripts/launcher.sh
 
 # GNOME Screenshot shortcuts without using Mod key
 bindsym Print exec gnome-screenshot -i                      # Interactive screenshot
 bindsym Shift+Print exec gnome-screenshot                   # Fullscreen screenshot
 bindsym Control+Print exec gnome-screenshot -a              # Area screenshot
-
-# Bind Super key + Shift to open Rofi launcher
-bindsym Super+Shift+Return exec rofi -show drun
