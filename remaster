@@ -21,9 +21,9 @@ PROJECT_DIR="live-build-project"
 mkdir -p $PROJECT_DIR
 cd $PROJECT_DIR
 
-# Configure live-build with Debian Installer
+# Configure live-build without Debian Installer
 echo "Configuring live-build..."
-lb config --distribution bookworm --debian-installer live
+lb config --distribution bookworm --debian-installer none
 check_success "Configuring live-build"
 
 # Modify sources.list to include non-free and contrib repository
@@ -189,7 +189,7 @@ echo "Building the live system..."
 lb build
 check_success "Building the live system"
 
-echo "Live-build OK. Plymouth and Debian Live Installer have been installed and configured. Please reboot your system."
+echo "Live-build OK. Plymouth has been installed and configured. Please reboot your system."
 
 # Move the created ISO to the specified directory
 ISO_OUTPUT_DIR="/var/www/html/iso/"
